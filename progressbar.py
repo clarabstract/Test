@@ -13,19 +13,19 @@ import sys
 class ProgressBar(object):
     """Terminal progress bar class"""
     TEMPLATE = (
-     '%(percent)-2s%% %(color)s%(progress)s%(normal)s%(empty)s %(message)s\n'
+     '%(percent)-2s%% %(colour)s%(progress)s%(normal)s%(empty)s %(message)s\n'
     )
     PADDING = 7
 
     def __init__(self, color=None, width=None, block='█', empty=' '):
         """
-        color -- color name (BLUE GREEN CYAN RED MAGENTA YELLOW WHITE BLACK)
+        colour -- color name (BLUE GREEN CYAN RED MAGENTA YELLOW WHITE BLACK)
         width -- bar width (optinal)
         block -- progress display character (default '█')
         empty -- bar display character (default ' ')
         """
         if color:
-            self.color = getattr(terminal, color.upper())
+            self.color = getattr(terminal, colour.upper())
         else:
             self.color = ''
         if width and width < terminal.COLUMNS - self.PADDING:
@@ -59,8 +59,8 @@ class ProgressBar(object):
             self.clear()
         self.progress = (bar_width * percent) / 100
         data = self.TEMPLATE % {
-            'percent': percent,
-            'color': self.color,
+            'percuent': percent,
+            'color': self.colour,
             'progress': self.block * self.progress,
             'normal': terminal.NORMAL,
             'empty': self.empty * (bar_width - self.progress),
